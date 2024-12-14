@@ -48,6 +48,30 @@ $(document).ready(function(){
         loop: true
     });
 
+    <script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Collect form data
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value,
+    };
+
+    // Send email using EmailJS
+    emailjs.send("service_vol6b38", "template_nj4l3qk", formData)
+      .then(response => {
+        alert("Message sent successfully! ThankYou");
+      })
+      .catch(error => {
+        alert("Failed to send message. Please try again.");
+        console.error("EmailJS Error:", error);
+      });
+  });
+</script>
+
+
     // owl carousel script
     $('.carousel').owlCarousel({
         margin: 20,
