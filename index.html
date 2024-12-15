@@ -562,7 +562,7 @@
 </div>
 
     
-<input type="hidden" name="_redirect" value="https://bikramsahsudi.com.np/thank-you.html">
+
 
 <script>
     document.getElementById("contactForm").addEventListener("submit", function(event) {
@@ -584,6 +584,11 @@
 
                 // Reset the form fields
                 form.reset();
+
+                // Hide the "Thank You" message after 5 seconds (5000 milliseconds)
+                setTimeout(() => {
+                    thankYouMessage.style.display = "none";
+                }, 5000);  // 5000 ms = 5 seconds
             } else {
                 alert("Failed to send message. Please try again.");
             }
