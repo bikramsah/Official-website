@@ -538,53 +538,48 @@
                 </div>
                 <div class="column right">
     <div class="text">Message me</div>
-    <form id="contactForm">
-        <div class="fields">
-            <div class="field name">
-                <input type="text" id="name" placeholder="Name" required>
-            </div>
-            <div class="field email">
-                <input type="email" id="email" placeholder="Email" required>
-            </div>
+    <form action="https://formspree.io/f/mgvejwng" method="POST">
+    <div class="fields">
+        <div class="field name">
+            <input type="text" name="name" placeholder="Your Name" required>
         </div>
-        <div class="field">
-            <input type="text" id="subject" placeholder="Subject" required>
+        <div class="field email">
+            <input type="email" name="email" placeholder="Your Email" required>
         </div>
-        <div class="field textarea">
-            <textarea id="message" cols="30" rows="10" placeholder="Message.." required></textarea>
-        </div>
-        <div class="button-area">
-            <button type="submit">Send message</button>
-        </div>
-    </form>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("public_MOkf3cnIHsm8mGFMo"); // Replace with your EmailJS Public Key
-        })();
+    </div>
+    <div class="field">
+        <input type="text" name="subject" placeholder="Subject" required>
+    </div>
+    <div class="field textarea">
+        <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+    </div>
+    <div class="button-area">
+        <button type="submit">Send Message</button>
+    </div>
+</form>
+    
+<input type="hidden" name="_redirect" value="https://bikramsahsudi.com.np/thank-you.html">
 
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            
-            // Collect form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-            };
+<script>
+   document.querySelector("form").addEventListener("submit", function(event) {
+       const name = document.querySelector('input[name="name"]').value.trim();
+       const email = document.querySelector('input[name="email"]').value.trim();
+       const subject = document.querySelector('input[name="subject"]').value.trim();
+       const message = document.querySelector('textarea[name="message"]').value.trim();
 
-            // Send email using EmailJS
-            emailjs.send("service_vol6b38", "template_nj4l3qk", formData)
-                .then(response => {
-                    alert("Message sent successfully!");
-                })
-                .catch(error => {
-                    alert("Failed to send message. Please try again.");
-                    console.error("EmailJS Error:", error);
-                });
-        });
-    </script>
+       if (!name || !email || !subject || !message) {
+           event.preventDefault(); // Stop form submission
+           alert("Please fill in all fields.");
+       }
+   });
+</script>
+
+
+
+
+    
+
+         
 </div>
 
             </div>
